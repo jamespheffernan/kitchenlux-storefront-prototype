@@ -1,0 +1,265 @@
+.newsletter-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.exit-intent {
+  animation: fadeInFast 0.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInFast {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.newsletter-popup {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+  width: 500px;
+  max-width: 90%;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  line-height: 1;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+.popup-content {
+  padding: 40px;
+  text-align: center;
+}
+
+.popup-header {
+  margin-bottom: 20px;
+}
+
+.popup-header h2 {
+  font-size: 28px;
+  margin: 0 0 10px;
+  color: var(--primary);
+  font-family: 'Playfair Display', serif;
+}
+
+.popup-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin: 0;
+}
+
+.popup-offer {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.discount-badge {
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.popup-offer p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.newsletter-form {
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.newsletter-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  margin-bottom: 5px;
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(146, 109, 38, 0.2);
+}
+
+.newsletter-form input.error {
+  border-color: #e74c3c;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin: 5px 0 0;
+  text-align: left;
+}
+
+.btn-subscribe {
+  width: 100%;
+  padding: 16px;
+  height: auto;
+  min-height: 50px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-subscribe:hover {
+  background-color: var(--primary-dark, #7d5a1d);
+}
+
+.btn-subscribe:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.privacy-note {
+  font-size: 13px;
+  color: #999;
+  margin: 0;
+}
+
+/* Mobile styles */
+@media (max-width: 576px) {
+  .newsletter-popup {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 0;
+    animation: slideUpMobile 0.3s ease forwards;
+  }
+
+  @keyframes slideUpMobile {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .popup-content {
+    padding: 25px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .popup-header h2 {
+    font-size: 24px;
+  }
+
+  .popup-subtitle {
+    font-size: 16px;
+  }
+
+  .popup-offer {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .newsletter-form {
+    margin: 20px 0;
+  }
+
+  .popup-close {
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    font-size: 28px;
+  }
+
+  .newsletter-form input {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .btn-subscribe {
+    padding: 16px;
+    font-size: 16px;
+    min-height: 56px; /* Larger touch target for mobile */
+  }
+}
+
+/* Touch specific improvements */
+@media (hover: none) {
+  .popup-close {
+    padding: 12px;
+  }
+
+  .btn-subscribe:active {
+    background-color: var(--primary-dark, #7d5a1d);
+  }
+}
